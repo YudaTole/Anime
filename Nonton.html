@@ -59,10 +59,10 @@
       align-items: center;
     }
 
-    .player-section video {
+    .player-section iframe {
       width: 100%;
       max-width: 900px;
-      aspect-ratio: 16/9;
+      height: 500px;
       border-radius: 12px;
       border: 2px solid cyan;
       box-shadow: 0 0 20px rgba(0,255,255,0.3);
@@ -198,11 +198,8 @@
   </div>
 
   <!-- VIDEO PLAYER -->
-  <div class="player-section">
-    <video id="player" controls>
-      <source src="" type="video/mp4">
-      Browser kamu tidak mendukung video.
-    </video>
+  <div class="player-section" id="playerSection">
+    <iframe src="" allow="autoplay" allowfullscreen></iframe>
     <h2 id="judul">🎬 Pilih Anime & Episode</h2>
   </div>
 
@@ -221,13 +218,6 @@
       <h3>Demon Slayer</h3>
       <div class="btn" onclick="openModal('ds')">Pilih Episode</div>
     </div>
-
-    <!-- Anime 3 -->
-    <div class="anime-card" data-title="Naruto">
-      <img src="https://i.ibb.co/VNsD7RQ/naruto.jpg" alt="Naruto">
-      <h3>Naruto</h3>
-      <div class="btn" onclick="openModal('naruto')">Pilih Episode</div>
-    </div>
   </div>
 
   <!-- MODAL: Kisah Asmara Kita -->
@@ -236,7 +226,7 @@
       <h3>Kisah Asmara Kita</h3>
       <div class="episode-list">
         <a onclick="gantiEpisode('https://drive.google.com/file/d/1Cdk5BaA8d2-_6OosH4XqIJJyf3Qml6v_/preview', 'Kisah Asmara Kita - Episode 1')">Episode 1</a>
-        <a onclick="gantiEpisode('https://github.com/YudaTole/My-video/raw/refs/heads/main/Sad%20%F0%9F%A5%80.mp4', 'Kisah Asmara Kita - Episode 2')">Episode 2</a>
+        <a onclick="gantiEpisode('https://drive.google.com/file/d/1ABCDEF234567890/preview', 'Kisah Asmara Kita - Episode 2')">Episode 2</a>
       </div>
       <div class="close" onclick="closeModal('kak')">Tutup</div>
     </div>
@@ -247,33 +237,19 @@
     <div class="modal-content">
       <h3>Demon Slayer</h3>
       <div class="episode-list">
-        <a onclick="gantiEpisode('https://github.com/YudaTole/My-video/raw/refs/heads/main/Animals%20%F0%9F%A5%B6.mp4', 'Demon Slayer - Episode 1')">Episode 1</a>
+        <a onclick="gantiEpisode('https://drive.google.com/file/d/1ZYXWVUT987654321/preview', 'Demon Slayer - Episode 1')">Episode 1</a>
       </div>
       <div class="close" onclick="closeModal('ds')">Tutup</div>
     </div>
   </div>
 
-  <!-- MODAL: Naruto -->
-  <div id="modal-naruto" class="modal">
-    <div class="modal-content">
-      <h3>Naruto</h3>
-      <div class="episode-list">
-        <a onclick="gantiEpisode('https://github.com/YudaTole/My-video/raw/refs/heads/main/Monica.mp4', 'Naruto - Episode 1')">Episode 1</a>
-      </div>
-      <div class="close" onclick="closeModal('naruto')">Tutup</div>
-    </div>
-  </div>
-
   <script>
     function gantiEpisode(link, judul) {
-      let player = document.getElementById("player");
-      let source = player.querySelector("source");
-
-      source.src = link;
-      player.load();
-      player.play();
-
-      document.getElementById("judul").innerText = "🎬 " + judul;
+      let playerSection = document.getElementById("playerSection");
+      playerSection.innerHTML = `
+        <iframe src="${link}" allow="autoplay" allowfullscreen></iframe>
+        <h2 id="judul">🎬 ${judul}</h2>
+      `;
 
       // Tutup semua modal
       document.querySelectorAll('.modal').forEach(m => m.style.display = 'none');
@@ -299,4 +275,4 @@
     });
   </script>
 </body>
-</html>      
+</html>
