@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Om Yudz Anime Sub Indo</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #000;
+      color: cyan;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #111;
+      padding: 10px 20px;
+    }
+
+    header img {
+      height: 50px;
+      border-radius: 50%;
+    }
+
+    nav a {
+      margin-left: 15px;
+      text-decoration: none;
+      color: cyan;
+      font-weight: bold;
+    }
+
+    .container {
+      display: block;
+      padding: 15px;
+    }
+
+    video {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    h2 {
+      color: #0ff;
+      margin-top: 30px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul li {
+      margin: 8px 0;
+    }
+
+    ul li a {
+      text-decoration: none;
+      color: #0ff;
+      padding: 8px 12px;
+      background: #111;
+      border-radius: 5px;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    ul li a:hover {
+      background: cyan;
+      color: #000;
+    }
+
+    @media (min-width: 768px) {
+      .container {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 20px;
+      }
+      video {
+        border: 2px solid cyan;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <img src="https://raw.githubusercontent.com/YudaTole/OmYudz/main/logo.png" alt="Logo Om Yudz">
+    <h1>[ 湯田 ] Yuda</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="anime.html">Anime</a>
+    </nav>
+  </header>
+
+  <!-- KONTEN -->
+  <div class="container">
+    <!-- Video Player -->
+    <div>
+      <h2 id="judul">🎬 Pilih Episode</h2>
+      <video id="player" controls>
+        <source src="" type="video/mp4">
+        Browser kamu tidak mendukung video.
+      </video>
+    </div>
+
+    <!-- List Anime & Episode -->
+    <div>
+      <h2>📺 Daftar Anime</h2>
+
+      <!-- Anime Pertama -->
+      <h3>Attack on Titan</h3>
+      <ul>
+        <li><a onclick="gantiEpisode('video/aot-ep1.mp4', 'Attack on Titan - Episode 1')">Episode 1</a></li>
+        <li><a onclick="gantiEpisode('video/aot-ep2.mp4', 'Attack on Titan - Episode 2')">Episode 2</a></li>
+      </ul>
+
+      <!-- Anime Kedua -->
+      <h3>Demon Slayer</h3>
+      <ul>
+        <li><a onclick="gantiEpisode('video/kimetsu-ep1.mp4', 'Demon Slayer - Episode 1')">Episode 1</a></li>
+        <li><a onclick="gantiEpisode('video/kimetsu-ep2.mp4', 'Demon Slayer - Episode 2')">Episode 2</a></li>
+      </ul>
+
+    </div>
+  </div>
+
+  <script>
+    function gantiEpisode(link, judul) {
+      let player = document.getElementById("player");
+      let source = player.querySelector("source");
+
+      source.src = link;          // ganti link video
+      player.load();              // reload video
+      player.play();              // langsung play
+
+      document.getElementById("judul").innerText = "🎬 " + judul; // ganti judul di atas player
+    }
+  </script>
+</body>
+</html>
