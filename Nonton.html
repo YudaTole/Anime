@@ -8,137 +8,256 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #000;
-      color: cyan;
+      background: #0a0a0a;
+      color: #0ff;
     }
 
+    /* HEADER */
     header {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
       background: #111;
-      padding: 10px 20px;
+      padding: 15px;
+      box-shadow: 0 2px 10px rgba(0,255,255,0.2);
     }
 
     header img {
-      height: 100px;
-      border-radius: 100%;
+      height: 50px;
+      border-radius: 50%;
+      margin-right: 15px;
     }
 
-    nav a {
-      margin-left: 15px;
-      text-decoration: none;
-      color: cyan;
-      font-weight: bold;
+    header h1 {
+      font-size: 22px;
+      margin: 0;
     }
 
-    .container {
+    /* SEARCH BAR */
+    .search-bar {
+      text-align: center;
+      margin: 20px auto;
+    }
+
+    .search-bar input {
+      padding: 10px;
+      width: 80%;
+      max-width: 400px;
+      border-radius: 8px;
+      border: 2px solid cyan;
+      background: #111;
+      color: #0ff;
+      font-size: 16px;
+    }
+
+    /* VIDEO PLAYER */
+    .player-section {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .player-section video {
+      width: 100%;
+      max-width: 900px;
+      border-radius: 12px;
+      border: 2px solid cyan;
+      box-shadow: 0 0 20px rgba(0,255,255,0.3);
+    }
+
+    .player-section h2 {
+      margin-top: 15px;
+      font-size: 20px;
+    }
+
+    /* DAFTAR ANIME */
+    .anime-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .anime-card {
+      background: #111;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(0,255,255,0.2);
+      text-align: center;
+      transition: transform 0.2s;
+    }
+
+    .anime-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .anime-card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
       display: block;
+    }
+
+    .anime-card h3 {
+      margin: 10px 0;
+      font-size: 18px;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-bottom: 15px;
+      padding: 8px 12px;
+      background: cyan;
+      color: #000;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      background: #0ff;
+    }
+
+    /* MODAL */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 100;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.85);
+      justify-content: center;
+      align-items: center;
       padding: 15px;
     }
 
-    video {
-      width: 100%;
-      height: auto;
-      border-radius: 10px;
-      margin-bottom: 15px;
-    }
-
-    h2 {
-      color: #0ff;
-      margin-top: 30px;
-    }
-
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    ul li {
-      margin: 8px 0;
-    }
-
-    ul li a {
-      text-decoration: none;
-      color: #0ff;
-      padding: 8px 12px;
+    .modal-content {
       background: #111;
-      border-radius: 5px;
-      display: inline-block;
-      cursor: pointer;
+      padding: 20px;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0,255,255,0.5);
+      animation: fadeIn 0.3s;
     }
 
-    ul li a:hover {
+    .modal-content h3 {
+      margin-top: 0;
+      font-size: 20px;
+    }
+
+    .episode-list a {
+      display: block;
+      margin: 8px 0;
+      padding: 10px;
+      background: #222;
+      border-radius: 6px;
+      color: cyan;
+      text-decoration: none;
+    }
+
+    .episode-list a:hover {
       background: cyan;
       color: #000;
     }
 
-    @media (min-width: 768px) {
-      .container {
-        display: grid;
-        grid-template-columns: 2fr 1fr;
-        gap: 20px;
-      }
-      video {
-        border: 2px solid cyan;
-      }
+    .close {
+      background: red;
+      color: #fff;
+      padding: 6px 12px;
+      border-radius: 6px;
+      margin-top: 12px;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9);}
+      to { opacity: 1; transform: scale(1);}
     }
   </style>
 </head>
 <body>
   <!-- HEADER -->
   <header>
-    <img src="https://files.catbox.moe/eer4qt.png" alt="Logo Om Yudz">
-    <h1>[ 湯田 ] Yuda</h1>
-    <nav>
-      <a href="#">Home</a>
-      <a href="#">Anime</a>
-    </nav>
+    <img src="https://raw.githubusercontent.com/YudaTole/OmYudz/main/logo.png" alt="Logo Om Yudz">
+    <h1>Om Yudz Anime Sub Indo</h1>
   </header>
 
-  <!-- KONTEN -->
-  <div class="container">
-    <!-- Video Player -->
-    <div>
-      <h2 id="judul">🎬 Pilih Episode</h2>
-      <video id="player" controls>
-        <source src="" type="video/mp4">
-        Browser kamu tidak mendukung video.
-      </video>
+  <!-- SEARCH BAR -->
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Cari anime...">
+  </div>
+
+  <!-- VIDEO PLAYER -->
+  <div class="player-section">
+    <video id="player" controls>
+      <source src="" type="video/mp4">
+      Browser kamu tidak mendukung video.
+    </video>
+    <h2 id="judul">🎬 Pilih Anime & Episode</h2>
+  </div>
+
+  <!-- DAFTAR ANIME -->
+  <div class="anime-list" id="animeList">
+    <!-- Anime 1 -->
+    <div class="anime-card" data-title="Attack on Titan">
+      <img src="https://i.ibb.co/3RDKR5r/aot.jpg" alt="Attack on Titan">
+      <h3>Attack on Titan</h3>
+      <div class="btn" onclick="openModal('aot')">Pilih Episode</div>
     </div>
 
-    <!-- List Anime & Episode -->
-    <div>
-      <h2>📺 Daftar Anime</h2>
-
-      <!-- Anime Pertama -->
-      <h3>Attack on Titan</h3>
-      <ul>
-        <li><a onclick="gantiEpisode('https://github.com/YudaTole/My-video/raw/refs/heads/main/Animals%20%F0%9F%A5%B6.mp4', 'Attack on Titan - Episode 1')">Episode 1</a></li>
-        <li><a onclick="gantiEpisode('https://github.com/YudaTole/My-video/raw/refs/heads/main/Sad%20%F0%9F%A5%80.mp4', 'Attack on Titan - Episode 2')">Episode 2</a></li>
-        <li><a onclick="gantiEpisode('https://github.com/YudaTole/My-video/raw/refs/heads/main/Animals%20%F0%9F%A5%B6.mp4', 'Attack on Titan - Episode 3')">Episode 3</a></li>
-        <li><a onclick="gantiEpisode('https://github.com/YudaTole/My-video/raw/refs/heads/main/Sad%20%F0%9F%A5%80.mp4', 'Attack on Titan - Episode 4')">Episode 4</a></li>
-        <li><a onclick="gantiEpisode('https://github.com/YudaTole/My-video/raw/refs/heads/main/Animals%20%F0%9F%A5%B6.mp4', 'Attack on Titan - Episode 5')">Episode 5</a></li>
-        <li><a onclick="gantiEpisode('https://github.com/YudaTole/My-video/raw/refs/heads/main/Sad%20%F0%9F%A5%80.mp4', 'Attack on Titan - Episode 6')">Episode 6</a></li>
-        <li><a onclick="gantiEpisode('https://github.com/YudaTole/My-video/raw/refs/heads/main/Animals%20%F0%9F%A5%B6.mp4', 'Attack on Titan - Episode 7')">Episode 7</a></li>
-        <li><a onclick="gantiEpisode('https://github.com/YudaTole/My-video/raw/refs/heads/main/Sad%20%F0%9F%A5%80.mp4', 'Attack on Titan - Episode 8')">Episode 8</a></li>
-        <li><a onclick="gantiEpisode('https://github.com/YudaTole/My-video/raw/refs/heads/main/Animals%20%F0%9F%A5%B6.mp4', 'Attack on Titan - Episode 9')">Episode 9</a></li>
-        <li><a onclick="gantiEpisode('https://github.com/YudaTole/My-video/raw/refs/heads/main/Sad%20%F0%9F%A5%80.mp4', 'Attack on Titan - Episode 10')">Episode 10</a></li>
-        <li><a onclick="gantiEpisode('https://github.com/YudaTole/My-video/raw/refs/heads/main/Animals%20%F0%9F%A5%B6.mp4', 'Attack on Titan - Episode 11')">Episode 11</a></li>
-        <li><a onclick="gantiEpisode('https://github.com/YudaTole/My-video/raw/refs/heads/main/Sad%20%F0%9F%A5%80.mp4', 'Attack on Titan - Episode 12')">Episode 12</a></li>
-        <li><a onclick="gantiEpisode('https://github.com/YudaTole/My-video/raw/refs/heads/main/Animals%20%F0%9F%A5%B6.mp4', 'Attack on Titan - Episode 13')">Episode 13</a></li>
-        <li><a onclick="gantiEpisode('https://github.com/YudaTole/My-video/raw/refs/heads/main/Sad%20%F0%9F%A5%80.mp4', 'Attack on Titan - Episode 14')">Episode 14</a></li>
-        <li><a onclick="gantiEpisode('https://github.com/YudaTole/My-video/raw/refs/heads/main/Animals%20%F0%9F%A5%B6.mp4', 'Attack on Titan - Episode 15')">Episode 15</a></li>
-        <li><a onclick="gantiEpisode('https://github.com/YudaTole/My-video/raw/refs/heads/main/Sad%20%F0%9F%A5%80.mp4', 'Attack on Titan - Episode 16')">Episode 16</a></li>
-      </ul>
-
-      <!-- Anime Kedua -->
+    <!-- Anime 2 -->
+    <div class="anime-card" data-title="Demon Slayer">
+      <img src="https://i.ibb.co/02xVQ8y/ds.jpg" alt="Demon Slayer">
       <h3>Demon Slayer</h3>
-      <ul>
-        <li><a onclick="gantiEpisode('https://github.com/YudaTole/My-video/raw/refs/heads/main/Sad%20%F0%9F%A5%80.mp4', 'Demon Slayer - Episode 1')">Episode 1</a></li>
-        <li><a onclick="gantiEpisode('https://github.com/YudaTole/My-video/raw/refs/heads/main/Animals%20%F0%9F%A5%B6.mp4', 'Demon Slayer - Episode 2')">Episode 2</a></li>
-      </ul>
+      <div class="btn" onclick="openModal('ds')">Pilih Episode</div>
+    </div>
 
+    <!-- Anime 3 -->
+    <div class="anime-card" data-title="Naruto">
+      <img src="https://i.ibb.co/VNsD7RQ/naruto.jpg" alt="Naruto">
+      <h3>Naruto</h3>
+      <div class="btn" onclick="openModal('naruto')">Pilih Episode</div>
+    </div>
+  </div>
+
+  <!-- MODAL: Attack on Titan -->
+  <div id="modal-aot" class="modal">
+    <div class="modal-content">
+      <h3>Attack on Titan</h3>
+      <div class="episode-list">
+        <a onclick="gantiEpisode('video/aot-ep1.mp4', 'Attack on Titan - Episode 1')">Episode 1</a>
+        <a onclick="gantiEpisode('video/aot-ep2.mp4', 'Attack on Titan - Episode 2')">Episode 2</a>
+      </div>
+      <div class="close" onclick="closeModal('aot')">Tutup</div>
+    </div>
+  </div>
+
+  <!-- MODAL: Demon Slayer -->
+  <div id="modal-ds" class="modal">
+    <div class="modal-content">
+      <h3>Demon Slayer</h3>
+      <div class="episode-list">
+        <a onclick="gantiEpisode('video/ds-ep1.mp4', 'Demon Slayer - Episode 1')">Episode 1</a>
+        <a onclick="gantiEpisode('video/ds-ep2.mp4', 'Demon Slayer - Episode 2')">Episode 2</a>
+      </div>
+      <div class="close" onclick="closeModal('ds')">Tutup</div>
+    </div>
+  </div>
+
+  <!-- MODAL: Naruto -->
+  <div id="modal-naruto" class="modal">
+    <div class="modal-content">
+      <h3>Naruto</h3>
+      <div class="episode-list">
+        <a onclick="gantiEpisode('video/naruto-ep1.mp4', 'Naruto - Episode 1')">Episode 1</a>
+        <a onclick="gantiEpisode('video/naruto-ep2.mp4', 'Naruto - Episode 2')">Episode 2</a>
+      </div>
+      <div class="close" onclick="closeModal('naruto')">Tutup</div>
     </div>
   </div>
 
@@ -147,12 +266,34 @@
       let player = document.getElementById("player");
       let source = player.querySelector("source");
 
-      source.src = link;          // ganti link video
-      player.load();              // reload video
-      player.play();              // langsung play
+      source.src = link;
+      player.load();
+      player.play();
 
-      document.getElementById("judul").innerText = "🎬 " + judul; // ganti judul di atas player
+      document.getElementById("judul").innerText = "🎬 " + judul;
+
+      // Tutup semua modal
+      document.querySelectorAll('.modal').forEach(m => m.style.display = 'none');
     }
+
+    function openModal(anime) {
+      document.getElementById("modal-" + anime).style.display = "flex";
+    }
+
+    function closeModal(anime) {
+      document.getElementById("modal-" + anime).style.display = "none";
+    }
+
+    // Fungsi pencarian anime
+    document.getElementById("searchInput").addEventListener("keyup", function() {
+      let filter = this.value.toLowerCase();
+      let cards = document.querySelectorAll(".anime-card");
+
+      cards.forEach(card => {
+        let title = card.getAttribute("data-title").toLowerCase();
+        card.style.display = title.includes(filter) ? "block" : "none";
+      });
+    });
   </script>
 </body>
 </html>
