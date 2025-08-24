@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Om Yudz Anime Sub Indo</title>
+  <title>Om Yudz ~ Anime Sub Indo</title>
   <style>
     body {
       margin: 0;
@@ -56,12 +56,14 @@
       padding: 20px;
     }
 
-    .player-section video {
+    iframe, video {
       width: 100%;
       max-width: 900px;
+      height: 500px;
       border-radius: 12px;
       border: 2px solid cyan;
       box-shadow: 0 0 20px rgba(0,255,255,0.3);
+      background: #000;
     }
 
     .player-section h2 {
@@ -194,7 +196,8 @@
 
   <!-- VIDEO PLAYER -->
   <div class="player-section">
-    <video id="player" controls>
+    <iframe id="iframePlayer" style="display:none;" allowfullscreen></iframe>
+    <video id="videoPlayer" controls>
       <source src="" type="video/mp4">
       Browser kamu tidak mendukung video.
     </video>
@@ -209,20 +212,7 @@
       <h3>Kisah Asmara Kita</h3>
       <div class="btn" onclick="openModal('kak')">Pilih Episode</div>
     </div>
-
-    <!-- Anime 2 -->
-    <div class="anime-card" data-title="Demon Slayer">
-      <img src="https://i.ibb.co/02xVQ8y/ds.jpg" alt="Demon Slayer">
-      <h3>Demon Slayer</h3>
-      <div class="btn" onclick="openModal('ds')">Pilih Episode</div>
-    </div>
-
-    <!-- Anime 3 -->
-    <div class="anime-card" data-title="Naruto">
-      <img src="https://i.ibb.co/VNsD7RQ/naruto.jpg" alt="Naruto">
-      <h3>Naruto</h3>
-      <div class="btn" onclick="openModal('naruto')">Pilih Episode</div>
-    </div>
+    <!-- dst... -->
   </div>
 
   <!-- MODAL: Kisah Asmara Kita -->
@@ -230,61 +220,32 @@
     <div class="modal-content">
       <h3>Kisah Asmara Kita</h3>
       <div class="episode-list">
-        <a onclick="gantiEpisode('https://drive.google.com/file/d/1Cdk5BaA8d2-6OosH4XqIJJyf3Qml6v/preview', 'Kisah Asmara Kita - Episode 1')">Episode 1</a>
+        <a onclick="gantiEpisode('https://drive.google.com/file/d/1Cdk5BaA8d2-_6OosH4XqIJJyf3Qml6v_/preview', 'Kisah Asmara Kita - Episode 1')">Episode 1</a>
         <a onclick="gantiEpisode('https://github.com/YudaTole/My-video/raw/refs/heads/main/Sad%20%F0%9F%A5%80.mp4', 'Kisah Asmara Kita - Episode 2')">Episode 2</a>
-        <a onclick="gantiEpisode('https://github.com/YudaTole/My-video/raw/refs/heads/main/Monica.mp4', 'Kisah Asmara Kita - Episode 3')">Episode 3</a>
-        <a onclick="gantiEpisode('https://github.com/YudaTole/My-video/raw/refs/heads/main/Animals%20%F0%9F%A5%B6.mp4', 'Kisah Asmara Kita - Episode 4')">Episode 4</a>
-        <a onclick="gantiEpisode('https://github.com/YudaTole/My-video/raw/refs/heads/main/Sad%20%F0%9F%A5%80.mp4', 'Kisah Asmara Kita - Episode 5')">Episode 5</a>
-        <a onclick="gantiEpisode('https://github.com/YudaTole/My-video/raw/refs/heads/main/Monica.mp4', 'Kisah Asmara Kita - Episode 6')">Episode 6</a>   
-        <a onclick="gantiEpisode('https://github.com/YudaTole/My-video/raw/refs/heads/main/Animals%20%F0%9F%A5%B6.mp4', 'Kisah Asmara Kita - Episode 7')">Episode 7</a>
-        <a onclick="gantiEpisode('https://github.com/YudaTole/My-video/raw/refs/heads/main/Sad%20%F0%9F%A5%80.mp4', 'Kisah Asmara Kita - Episode 8')">Episode 8</a>
-        <a onclick="gantiEpisode('https://github.com/YudaTole/My-video/raw/refs/heads/main/Monica.mp4', 'Kisah Asmara Kita - Episode 9')">Episode 9</a>
-        <a onclick="gantiEpisode('https://github.com/YudaTole/My-video/raw/refs/heads/main/Animals%20%F0%9F%A5%B6.mp4', 'Kisah Asmara Kita - Episode 10')">Episode 10</a>
-        <a onclick="gantiEpisode('https://github.com/YudaTole/My-video/raw/refs/heads/main/Sad%20%F0%9F%A5%80.mp4', 'Kisah Asmara Kita - Episode 11')">Episode 11</a>
-        <a onclick="gantiEpisode('https://github.com/YudaTole/My-video/raw/refs/heads/main/Monica.mp4', 'Kisah Asmara Kita - Episode 12')">Episode 12</a>
       </div>
       <div class="close" onclick="closeModal('kak')">Tutup</div>
     </div>
   </div>
 
-  <!-- MODAL: Demon Slayer -->
-  <div id="modal-ds" class="modal">
-    <div class="modal-content">
-      <h3>Demon Slayer</h3>
-      <div class="episode-list">
-        <a onclick="gantiEpisode('https://github.com/YudaTole/My-video/raw/refs/heads/main/Animals%20%F0%9F%A5%B6.mp4', 'Demon Slayer - Episode 1')">Episode 1</a>
-        <a onclick="gantiEpisode('https://github.com/YudaTole/My-video/raw/refs/heads/main/Sad%20%F0%9F%A5%80.mp4', 'Demon Slayer - Episode 2')">Episode 2</a>
-        <a onclick="gantiEpisode('https://github.com/YudaTole/My-video/raw/refs/heads/main/Monica.mp4', 'Attack on Titan - Episode 3')">Episode 3</a>
-      </div>
-      <div class="close" onclick="closeModal('ds')">Tutup</div>
-    </div>
-  </div>
-
-  <!-- MODAL: Naruto -->
-  <div id="modal-naruto" class="modal">
-    <div class="modal-content">
-      <h3>Naruto</h3>
-      <div class="episode-list">
-        <a onclick="gantiEpisode('https://github.com/YudaTole/My-video/raw/refs/heads/main/Animals%20%F0%9F%A5%B6.mp4', 'Naruto - Episode 1')">Episode 1</a>
-        <a onclick="gantiEpisode('https://github.com/YudaTole/My-video/raw/refs/heads/main/Sad%20%F0%9F%A5%80.mp4', 'Naruto - Episode 2')">Episode 2</a>
-        <a onclick="gantiEpisode('https://github.com/YudaTole/My-video/raw/refs/heads/main/Monica.mp4', 'Attack on Titan - Episode 3')">Episode 3</a>
-      </div>
-      <div class="close" onclick="closeModal('naruto')">Tutup</div>
-    </div>
-  </div>
-
   <script>
     function gantiEpisode(link, judul) {
-      let player = document.getElementById("player");
-      let source = player.querySelector("source");
+      let iframe = document.getElementById("iframePlayer");
+      let video = document.getElementById("videoPlayer");
+      let source = video.querySelector("source");
 
-      source.src = link;
-      player.load();
-      player.play();
+      if (link.includes("drive.google.com")) {
+        video.style.display = "none";
+        iframe.style.display = "block";
+        iframe.src = link;
+      } else {
+        iframe.style.display = "none";
+        video.style.display = "block";
+        source.src = link;
+        video.load();
+        video.play();
+      }
 
       document.getElementById("judul").innerText = "🎬 " + judul;
-
-      // Tutup semua modal
       document.querySelectorAll('.modal').forEach(m => m.style.display = 'none');
     }
 
@@ -296,11 +257,9 @@
       document.getElementById("modal-" + anime).style.display = "none";
     }
 
-    // Fungsi pencarian anime
     document.getElementById("searchInput").addEventListener("keyup", function() {
       let filter = this.value.toLowerCase();
       let cards = document.querySelectorAll(".anime-card");
-
       cards.forEach(card => {
         let title = card.getAttribute("data-title").toLowerCase();
         card.style.display = title.includes(filter) ? "block" : "none";
