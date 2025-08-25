@@ -169,6 +169,20 @@
       </div>
     </div>
 
+    <!-- CARD 4 -->
+    <div class="card" data-title="The Aristocrat's Otherworldly Adventure: Serving Gods Who Go Too Far" data-genre="Action, Isekai" onclick="openModal('unikid')">
+      <img class="poster" src="https://github.com/YudaTole/Data-Anime/raw/refs/heads/main/The%20Aristocrat's%20Otherworldly%20Adventure%20Serving%20Gods%20Who%20Go%20Too%20Far.png" alt="The Aristocrat's Otherworldly Adventure: Serving Gods Who Go Too Far"/>
+      <div class="info">
+        <h3 class="title">The Aristocrat's Otherworldly Adventure: Serving Gods Who Go Too Far</h3>
+        <div class="badges">
+          <span class="badge">Action</span>
+          <span class="badge">Isekai</span>
+          <span class="badge rating">⭐ 6.68</span>
+        </div>
+        <button class="btn" onclick="event.stopPropagation();openModal('unikid')">Pilih Episode</button>
+      </div>
+    </div>
+
     <!-- ===== CONTOH TEMPLATE SIAP COPAS =====
     <div class="card" data-title="Judul Anime" data-genre="Action, Comedy" onclick="openModal('unikid')">
       <img class="poster" src="THUMBNAIL_URL" alt="Judul Anime"/>
@@ -239,6 +253,18 @@
         <a onclick="gantiEpisode('https://drive.google.com/file/d/1EiKrpgumy30mrE2UM3T_d8TmdCvXFvjQ/preview','The Angel Next Door Spoils Me Rotten - Episode 12')">Episode 12</a>
       </div>
       <div class="close" onclick="closeModal('tandsmr')">Tutup</div>
+    </div>
+  </div>
+
+  <!-- The Aristocrat's Otherworldly Adventure: Serving Gods Who Go Too Far -->
+  <div id="modal-unikid" class="modal">
+    <div class="modal-content">
+      <h3>The Aristocrat's Otherworldly Adventure: Serving Gods Who Go Too Far</h3>
+      <div class="episode-list">
+        <a onclick="gantiEpisode('DRIVE_PREVIEW_URL','Judul Anime - Episode 1')">Episode 1</a>
+        <a onclick="gantiEpisode('DRIVE_PREVIEW_URL','Judul Anime - Episode 2')">Episode 2</a>
+      </div>
+      <div class="close" onclick="closeModal('unikid')">Tutup</div>
     </div>
   </div>
 
