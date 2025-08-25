@@ -86,10 +86,11 @@
 
     /* MODAL */
     .modal{display:none;position:fixed;z-index:60;inset:0;background:rgba(0,0,0,.88);
-      align-items:center;justify-content:center;padding:16px}
+      display:flex;align-items:center;justify-content:center;padding:16px}
     .modal-content{
       width:100%;max-width:420px;background:#101012;border:1px solid rgba(0,255,255,.25);
-      border-radius:14px;padding:18px;box-shadow:0 18px 60px rgba(0,255,255,.15);animation:pop .18s ease
+      border-radius:14px;padding:18px;box-shadow:0 18px 60px rgba(0,255,255,.15);animation:pop .18s ease;
+      max-height:80vh;overflow-y:auto; /* BIAR SCROLL KALO EPISODE BANYAK */
     }
     @keyframes pop{from{transform:scale(.96);opacity:.6}to{transform:scale(1);opacity:1}}
     .modal-content h3{margin:0 0 10px;font-size:18px}
@@ -121,7 +122,7 @@
   <div class="player-wrap">
     <div class="player" id="playerBox">
       <iframe id="player" src="" allow="autoplay" allowfullscreen></iframe>
-      <h2 id="judul">🎬 Pilih Anime & Episode, Dengan Kualitas (360p ~ 720p ~ 1080p)</h2>
+      <h2 id="judul">🎬 Pilih Anime & Episode, Dengan Kualitas ( 360p ~ 720p ~ 1080p )</h2>
     </div>
   </div>
 
