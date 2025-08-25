@@ -1,277 +1,238 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Om Yudz Anime Sub Indo</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Om Yudz — Nonton Anime Sub Indo</title>
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0a0a0a;
-      color: #0ff;
+    :root{
+      --bg:#0a0a0a; --panel:#111; --line:#00ffff; --text:#e8ffff;
+      --muted:#a7e7e7; --danger:#ff3b3b;
     }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text)}
 
     /* HEADER */
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #111;
-      padding: 15px;
-      box-shadow: 0 2px 10px rgba(0,255,255,0.2);
+    header{
+      position:sticky;top:0;z-index:50;
+      display:flex;align-items:center;gap:12px;justify-content:center;
+      background:linear-gradient(180deg,#0f0f10,#0a0a0a 90%);
+      padding:14px 18px;border-bottom:1px solid rgba(0,255,255,.15);
+      box-shadow:0 6px 24px rgba(0,255,255,.08);
     }
+    header img{height:44px;width:44px;border-radius:50%;border:2px solid rgba(0,255,255,.35)}
+    header h1{margin:0;font-size:18px;letter-spacing:.5px;color:var(--text)}
 
-    header img {
-      height: 50px;
-      border-radius: 50%;
-      margin-right: 15px;
+    /* SEARCH */
+    .search{
+      max-width:1100px;margin:16px auto 0;padding:0 16px 8px;
     }
-
-    header h1 {
-      font-size: 22px;
-      margin: 0;
+    .search input{
+      width:100%;padding:12px 14px;border-radius:10px;border:2px solid rgba(0,255,255,.35);
+      background:#0f0f10;color:var(--text);font-size:15px;outline:none;
+      box-shadow:0 0 0 2px transparent;transition:.2s;
     }
+    .search input:focus{box-shadow:0 0 0 2px rgba(0,255,255,.25)}
 
-    /* SEARCH BAR */
-    .search-bar {
-      text-align: center;
-      margin: 20px auto;
+    /* PLAYER */
+    .player-wrap{display:flex;justify-content:center}
+    .player{
+      width:100%;max-width:1000px;margin:18px auto;padding:10px 16px;
+      border:1px solid rgba(0,255,255,.25);border-radius:14px;background:rgba(17,17,17,.9);
+      box-shadow:0 12px 40px rgba(0,255,255,.10), inset 0 0 0 1px rgba(0,255,255,.08);
     }
-
-    .search-bar input {
-      padding: 10px;
-      width: 80%;
-      max-width: 400px;
-      border-radius: 8px;
-      border: 2px solid cyan;
-      background: #111;
-      color: #0ff;
-      font-size: 16px;
+    .player iframe{
+      width:100%;aspect-ratio:16/9;border:0;border-radius:10px;background:#000;
+      box-shadow:0 0 0 2px rgba(0,255,255,.25);
     }
+    .player h2{margin:12px 4px 0;font-size:16px;color:var(--muted);font-weight:600}
 
-    /* VIDEO PLAYER */
-    .player-section {
-      text-align: center;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    /* GRID ala Netflix */
+    .grid{
+      max-width:1200px;margin:8px auto 32px;padding:0 16px;
+      display:grid;gap:16px;
+      grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
     }
+    @media(min-width:720px){ .grid{gap:18px;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));} }
+    @media(min-width:1024px){ .grid{gap:20px;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));} }
 
-    .player-section iframe {
-      width: 100%;
-      max-width: 900px;
-      height: 500px;
-      border-radius: 12px;
-      border: 2px solid cyan;
-      box-shadow: 0 0 20px rgba(0,255,255,0.3);
-      background: #000;
+    .card{
+      position:relative;overflow:hidden;border-radius:12px;background:var(--panel);
+      border:1px solid rgba(0,255,255,.14);box-shadow:0 10px 24px rgba(0,0,0,.35);
+      transform:translateZ(0);transition:transform .2s, box-shadow .2s, border-color .2s;
+      cursor:pointer;
     }
+    .card:hover{transform:scale(1.04);border-color:rgba(0,255,255,.35);box-shadow:0 16px 40px rgba(0,255,255,.15)}
+    .poster{width:100%;aspect-ratio:2/3;object-fit:cover;display:block}
 
-    .player-section h2 {
-      margin-top: 15px;
-      font-size: 20px;
+    /* Overlay info bawah poster */
+    .info{
+      position:absolute;inset:auto 0 0 0;padding:10px 10px 12px;
+      background:linear-gradient(180deg,transparent 0%, rgba(0,0,0,.65) 40%, rgba(0,0,0,.85) 100%);
+      color:#fff;
     }
-
-    /* DAFTAR ANIME */
-    .anime-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-      padding: 20px;
-      max-width: 1100px;
-      margin: auto;
+    .title{margin:0 0 6px;font-size:14px;font-weight:700}
+    .badges{display:flex;gap:6px;flex-wrap:wrap}
+    .badge{
+      font-size:11px;line-height:1;padding:6px 8px;border-radius:999px;
+      border:1px solid rgba(255,255,255,.25);background:rgba(0,0,0,.35);backdrop-filter:blur(2px)
     }
+    .badge.rating{border-color:rgba(0,255,160,.4)}
 
-    .anime-card {
-      background: #111;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 0 15px rgba(0,255,255,0.2);
-      text-align: center;
-      transition: transform 0.2s;
-    }
-
-    .anime-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .anime-card img {
-      width: 100%;
-      aspect-ratio: 3/4;
-      object-fit: cover;
-      display: block;
-    }
-
-    .anime-card h3 {
-      margin: 6px 0;
-      font-size: 18px;
-    }
-
-    .btn {
-      display: inline-block;
-      margin-bottom: 15px;
-      padding: 8px 12px;
-      background: cyan;
-      color: #000;
-      font-weight: bold;
-      border-radius: 6px;
-      cursor: pointer;
-      text-decoration: none;
-    }
-
-    .btn:hover {
-      background: #0ff;
+    .card .btn{
+      margin-top:10px;display:inline-block;padding:7px 10px;border-radius:8px;
+      background:var(--line);color:#001;font-weight:700;font-size:13px;border:0
     }
 
     /* MODAL */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 100;
-      left: 0; top: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.85);
-      justify-content: center;
-      align-items: center;
-      padding: 15px;
+    .modal{display:none;position:fixed;z-index:60;inset:0;background:rgba(0,0,0,.88);
+      display:flex;align-items:center;justify-content:center;padding:16px}
+    .modal-content{
+      width:100%;max-width:420px;background:#101012;border:1px solid rgba(0,255,255,.25);
+      border-radius:14px;padding:18px;box-shadow:0 18px 60px rgba(0,255,255,.15);animation:pop .18s ease
     }
+    @keyframes pop{from{transform:scale(.96);opacity:.6}to{transform:scale(1);opacity:1}}
+    .modal-content h3{margin:0 0 10px;font-size:18px}
+    .episode-list a{
+      display:block;padding:10px 12px;margin:8px 0;border-radius:10px;text-decoration:none;
+      background:#17181a;color:var(--text);border:1px solid rgba(0,255,255,.2)
+    }
+    .episode-list a:hover{background:#0f1214;border-color:rgba(0,255,255,.35)}
+    .close{display:inline-block;margin-top:8px;padding:8px 12px;border-radius:10px;background:var(--danger);color:#fff;cursor:pointer}
 
-    .modal-content {
-      background: #111;
-      padding: 20px;
-      border-radius: 16px;
-      width: 90%;
-      max-width: 400px;
-      text-align: center;
-      box-shadow: 0 0 20px rgba(0,255,255,0.5);
-      animation: fadeIn 0.3s;
-    }
-
-    .modal-content h3 {
-      margin-top: 0;
-      font-size: 20px;
-    }
-
-    .episode-list a {
-      display: block;
-      margin: 8px 0;
-      padding: 6px;
-      background: #222;
-      border-radius: 6px;
-      color: cyan;
-      text-decoration: none;
-    }
-
-    .episode-list a:hover {
-      background: cyan;
-      color: #000;
-    }
-
-    .close {
-      background: red;
-      color: #fff;
-      padding: 6px 12px;
-      border-radius: 6px;
-      margin-top: 12px;
-      display: inline-block;
-      cursor: pointer;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.9);}
-      to { opacity: 1; transform: scale(1);}
-    }
+    /* Helpers */
+    .hide{display:none!important}
   </style>
 </head>
 <body>
+
   <!-- HEADER -->
   <header>
-    <img src="https://files.catbox.moe/eer4qt.png" alt="Logo Om Yudz">
-    <h1>[ 湯田 ] Yuda</h1>
+    <img src="https://files.catbox.moe/eer4qt.png" alt="Logo"/>
+    <h1>Om Yudz • Anime Sub Indo</h1>
   </header>
 
-  <!-- SEARCH BAR -->
-  <div class="search-bar">
-    <input type="text" id="searchInput" placeholder="Cari anime...">
+  <!-- SEARCH -->
+  <div class="search">
+    <input id="searchInput" type="text" placeholder="Cari anime, genre… (misal: action, romance, school)"/>
   </div>
 
-  <!-- VIDEO PLAYER -->
-  <div class="player-section" id="playerSection">
-    <iframe src="" allow="autoplay" allowfullscreen></iframe>
-    <h2 id="judul">🎬 Pilih Anime & Episode</h2>
-  </div>
-
-  <!-- DAFTAR ANIME -->
-  <div class="anime-list" id="animeList">
-    <!-- Anime 1 -->
-    <div class="anime-card" data-title="Kisah Asmara Kita">
-      <img src="https://github.com/YudaTole/Data-Anime/raw/refs/heads/main/KisahAsmara.jpeg" alt="Kisah Asmara Kita">
-      <h3>Kisah Asmara Kita</h3>
-      <div class="btn" onclick="openModal('kak')">Pilih Episode</div>
-    </div>
-
-    <!-- Anime 2 -->
-    <div class="anime-card" data-title="Mato Seihei No Slave">
-      <img src="https://github.com/YudaTole/Data-Anime/raw/refs/heads/main/MatoSeihei.jpeg" alt="Mato Seihei No Slave">
-      <h3>Mato Seihei No Slave</h3>
-      <div class="btn" onclick="openModal('msns')">Pilih Episode</div>
+  <!-- PLAYER -->
+  <div class="player-wrap">
+    <div class="player" id="playerBox">
+      <iframe id="player" src="" allow="autoplay" allowfullscreen></iframe>
+      <h2 id="judul">🎬 Pilih Anime & Episode</h2>
     </div>
   </div>
 
-  <!-- MODAL: Kisah Asmara Kita -->
+  <!-- GRID / DAFTAR ANIME -->
+  <div class="grid" id="animeList">
+    <!-- CARD 1 -->
+    <div class="card" data-title="Kisah Asmara Kita" data-genre="Romance, School" onclick="openModal('kak')">
+      <img class="poster" src="https://github.com/YudaTole/Data-Anime/raw/refs/heads/main/KisahAsmara.jpeg" alt="Kisah Asmara Kita"/>
+      <div class="info">
+        <h3 class="title">Kisah Asmara Kita</h3>
+        <div class="badges">
+          <span class="badge">Romance</span>
+          <span class="badge">School</span>
+          <span class="badge rating">⭐ 8.2</span>
+        </div>
+        <button class="btn" onclick="event.stopPropagation();openModal('kak')">Pilih Episode</button>
+      </div>
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="card" data-title="Mato Seihei No Slave" data-genre="Action, Fantasy" onclick="openModal('msns')">
+      <img class="poster" src="https://github.com/YudaTole/Data-Anime/raw/refs/heads/main/MatoSeihei.jpeg" alt="Mato Seihei No Slave"/>
+      <div class="info">
+        <h3 class="title">Mato Seihei No Slave</h3>
+        <div class="badges">
+          <span class="badge">Action</span>
+          <span class="badge">Fantasy</span>
+          <span class="badge rating">⭐ 7.9</span>
+        </div>
+        <button class="btn" onclick="event.stopPropagation();openModal('msns')">Pilih Episode</button>
+      </div>
+    </div>
+
+    <!-- ===== CONTOH TEMPLATE SIAP COPAS =====
+    <div class="card" data-title="Judul Anime" data-genre="Action, Comedy" onclick="openModal('unikid')">
+      <img class="poster" src="THUMBNAIL_URL" alt="Judul Anime"/>
+      <div class="info">
+        <h3 class="title">Judul Anime</h3>
+        <div class="badges">
+          <span class="badge">Action</span>
+          <span class="badge">Comedy</span>
+          <span class="badge rating">⭐ 8.6</span>
+        </div>
+        <button class="btn" onclick="event.stopPropagation();openModal('unikid')">Pilih Episode</button>
+      </div>
+    </div>
+    ======================================== -->
+  </div>
+
+  <!-- MODALS -->
+  <!-- KISAH ASMARA KITA -->
   <div id="modal-kak" class="modal">
     <div class="modal-content">
       <h3>Kisah Asmara Kita</h3>
       <div class="episode-list">
-        <a onclick="gantiEpisode('https://drive.google.com/file/d/1Cdk5BaA8d2-_6OosH4XqIJJyf3Qml6v_/preview', 'Kisah Asmara Kita - Episode 1')">Episode 1</a>
+        <a onclick="gantiEpisode('https://drive.google.com/file/d/1Cdk5BaA8d2-_6OosH4XqIJJyf3Qml6v_/preview','Kisah Asmara Kita - Episode 1')">Episode 1</a>
+        <!-- Tambahkan episode lain dengan pola sama -->
       </div>
       <div class="close" onclick="closeModal('kak')">Tutup</div>
     </div>
   </div>
 
-  <!-- MODAL: Mato Seihei No Slave -->
+  <!-- MATO SEIHEI NO SLAVE -->
   <div id="modal-msns" class="modal">
     <div class="modal-content">
       <h3>Mato Seihei No Slave</h3>
       <div class="episode-list">
-        <a onclick="gantiEpisode('https://drive.google.com/file/d/1CnC2LAFhPsaVVFgcihoi64rgw3YfqxYI/preview', 'Mato Seihei No Slave - Episode 1')">Episode 1</a>
+        <a onclick="gantiEpisode('https://drive.google.com/file/d/1CnC2LAFhPsaVVFgcihoi64rgw3YfqxYI/preview','Mato Seihei No Slave - Episode 1')">Episode 1</a>
       </div>
       <div class="close" onclick="closeModal('msns')">Tutup</div>
     </div>
   </div>
 
+  <!-- ===== TEMPLATE MODAL SIAP COPAS =====
+  <div id="modal-unikid" class="modal">
+    <div class="modal-content">
+      <h3>Judul Anime</h3>
+      <div class="episode-list">
+        <a onclick="gantiEpisode('DRIVE_PREVIEW_URL','Judul Anime - Episode 1')">Episode 1</a>
+        <a onclick="gantiEpisode('DRIVE_PREVIEW_URL','Judul Anime - Episode 2')">Episode 2</a>
+      </div>
+      <div class="close" onclick="closeModal('unikid')">Tutup</div>
+    </div>
+  </div>
+  ========================================= -->
+
   <script>
-    function gantiEpisode(link, judul) {
-      let playerSection = document.getElementById("playerSection");
-      playerSection.innerHTML = `
-        <iframe src="${link}" allow="autoplay" allowfullscreen></iframe>
-        <h2 id="judul">🎬 ${judul}</h2>
-      `;
-
-      // Tutup semua modal
-      document.querySelectorAll('.modal').forEach(m => m.style.display = 'none');
+    // Ganti episode (Google Drive preview)
+    function gantiEpisode(link, judul){
+      const player   = document.getElementById('player');
+      const titleEl  = document.getElementById('judul');
+      player.src = link;
+      titleEl.textContent = '🎬 ' + judul;
+      document.querySelectorAll('.modal').forEach(m=>m.style.display='none');
+      // scroll smooth ke player saat pilih episode
+      document.querySelector('.player').scrollIntoView({behavior:'smooth', block:'start'});
     }
 
-    function openModal(anime) {
-      document.getElementById("modal-" + anime).style.display = "flex";
-    }
+    // Modal open/close
+    function openModal(id){ document.getElementById('modal-'+id).style.display='flex'; }
+    function closeModal(id){ document.getElementById('modal-'+id).style.display='none'; }
 
-    function closeModal(anime) {
-      document.getElementById("modal-" + anime).style.display = "none";
-    }
-
-    // Fungsi pencarian anime
-    document.getElementById("searchInput").addEventListener("keyup", function() {
-      let filter = this.value.toLowerCase();
-      let cards = document.querySelectorAll(".anime-card");
-
-      cards.forEach(card => {
-        let title = card.getAttribute("data-title").toLowerCase();
-        card.style.display = title.includes(filter) ? "block" : "none";
+    // Search by title/genre
+    document.getElementById('searchInput').addEventListener('input', function(){
+      const q = this.value.trim().toLowerCase();
+      document.querySelectorAll('#animeList .card').forEach(card=>{
+        const title = (card.dataset.title||'').toLowerCase();
+        const genre = (card.dataset.genre||'').toLowerCase();
+        card.classList.toggle('hide', !(title.includes(q) || genre.includes(q)));
       });
     });
   </script>
 </body>
-</html>
+  </html>
