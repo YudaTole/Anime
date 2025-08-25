@@ -128,10 +128,10 @@
   <!-- GRID / DAFTAR ANIME -->
   <div class="grid" id="animeList">
     <!-- CARD 1 -->
-    <div class="card" data-title="Kisah Asmara Kita" data-genre="Romance, School" onclick="openModal('kak')">
-      <img class="poster" src="https://github.com/YudaTole/Data-Anime/raw/refs/heads/main/KisahAsmara.jpeg" alt="Kisah Asmara Kita"/>
+    <div class="card" data-title="Our Dating Story: The Experienced You and The Inexperienced Me" data-genre="Romance, School" onclick="openModal('kak')">
+      <img class="poster" src="https://github.com/YudaTole/Data-Anime/raw/refs/heads/main/Our%20Dating%20Story_The%20Experienced%20You%20and%20The%20Inexperienced%20Me.jpeg" alt="Our Dating Story: The Experienced You and The Inexperienced Me"/>
       <div class="info">
-        <h3 class="title">Kisah Asmara Kita</h3>
+        <h3 class="title">Our Dating Story: The Experienced You and The Inexperienced Me</h3>
         <div class="badges">
           <span class="badge">Romance</span>
           <span class="badge">School</span>
@@ -143,7 +143,7 @@
 
     <!-- CARD 2 -->
     <div class="card" data-title="Mato Seihei No Slave" data-genre="Action, Fantasy" onclick="openModal('msns')">
-      <img class="poster" src="https://github.com/YudaTole/Data-Anime/raw/refs/heads/main/MatoSeihei.jpeg" alt="Mato Seihei No Slave"/>
+      <img class="poster" src="https://github.com/YudaTole/Data-Anime/raw/refs/heads/main/Mato%20Seihei%20no%20Slave.png" alt="Mato Seihei No Slave"/>
       <div class="info">
         <h3 class="title">Mato Seihei No Slave</h3>
         <div class="badges">
@@ -152,6 +152,20 @@
           <span class="badge rating">⭐ 7.9</span>
         </div>
         <button class="btn" onclick="event.stopPropagation();openModal('msns')">Pilih Episode</button>
+      </div>
+    </div>
+
+      <!-- CARD 3 -->
+    <div class="card" data-title="The Angel Next Door Spoils Me Rotten" data-genre="School, Romance" onclick="openModal('unikid')">
+      <img class="poster" src="https://github.com/YudaTole/Data-Anime/raw/refs/heads/main/The%20Angel%20Next%20Door%20Spoils%20Me%20Rotten.jpg" alt="The Angel Next Door Spoils Me Rotten"/>
+      <div class="info">
+        <h3 class="title">The Angel Next Door Spoils Me Rotten</h3>
+        <div class="badges">
+          <span class="badge">School</span>
+          <span class="badge">Romance</span>
+          <span class="badge rating">⭐ 8.6</span>
+        </div>
+        <button class="btn" onclick="event.stopPropagation();openModal('unikid')">Pilih Episode</button>
       </div>
     </div>
 
@@ -192,6 +206,18 @@
         <a onclick="gantiEpisode('https://drive.google.com/file/d/1CnC2LAFhPsaVVFgcihoi64rgw3YfqxYI/preview','Mato Seihei No Slave - Episode 1')">Episode 1</a>
       </div>
       <div class="close" onclick="closeModal('msns')">Tutup</div>
+    </div>
+  </div>
+
+   <!-- The Angel Next Door Spoils Me Rotten -->
+  <div id="modal-unikid" class="modal">
+    <div class="modal-content">
+      <h3>The Angel Next Door Spoils Me Rotten</h3>
+      <div class="episode-list">
+        <a onclick="gantiEpisode('DRIVE_PREVIEW_URL','The Angel Next Door Spoils Me Rotten - Episode 1')">Episode 1</a>
+        <a onclick="gantiEpisode('DRIVE_PREVIEW_URL','The Angel Next Door Spoils Me Rotten - Episode 2')">Episode 2</a>
+      </div>
+      <div class="close" onclick="closeModal('taxdsmr')">Tutup</div>
     </div>
   </div>
 
