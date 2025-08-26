@@ -318,14 +318,6 @@
         card.classList.toggle('hide', !(title.includes(q) || genre.includes(q)));
       });
     });
-
-    // Instruksi saat fullscreen di HP
-const player = document.getElementById("player");
-player.addEventListener("fullscreenchange", () => {
-  if (document.fullscreenElement) {
-    alert("💡 Untuk pengalaman terbaik, silakan putar HP ke mode landscape.");
-  }
-});
   </script>
 </body>
   </html>
