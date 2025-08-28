@@ -233,20 +233,6 @@
         <button class="btn" onclick="event.stopPropagation();openModal('tao')">Pilih Episode</button>
       </div>
     </div>
-
-    <!-- CARD 5 -->
-    <div class="card" data-title="Kawaii dake ja Nai Shikimori-san" data-genre="School, Romance" onclick="openModal('kdj')">
-      <img class="poster" src="https://files.catbox.moe/4uwix4.jpg" alt="Kawaii dake ja Nai Shikimori-san"/>
-      <div class="info">
-        <h3 class="title">Kawaii dake ja Nai Shikimori-san</h3>
-        <div class="badges">
-          <span class="badge">School</span>
-          <span class="badge">Romance</span>
-          <span class="badge rating">⭐ 6.68</span>
-        </div>
-        <button class="btn" onclick="event.stopPropagation();openModal('kdj')">Pilih Episode</button>
-      </div>
-    </div>
   </div>
 
   <!-- ================== MODALS ================== -->
@@ -430,18 +416,6 @@
         <a onclick="requestPlay('https://drive.google.com/file/d/1GislNP02kfeIG9vOpnlMdF45pr-Etz5W/preview','Aristocrat Adventure - Episode 2')">Episode 2</a>
       </div>
       <div class="close" onclick="closeModal('tao')">Tutup</div>
-    </div>
-  </div>
-
-  <!-- Kawaii dake ja Nai Shikimori-san -->
-  <div id="modal-kdj" class="modal" tabindex="-1">
-    <div class="modal-content">
-      <h3>Kawaii dake ja Nai Shikimori-san</h3>
-      <div class="episode-list">
-        <a onclick="requestPlay('https://drive.google.com/file/d/1GkwVOgH1uPoI3Aj9Rbxp2lw03-864x93/preview','Kawaii dake ja Nai Shikimori-san - Episode 1')">Episode 1</a>
-        <a onclick="requestPlay('https://drive.google.com/file/d/1GislNP02kfeIG9vOpnlMdF45pr-Etz5W/preview','Kawaii dake ja Nai Shikimori-san - Episode 2')">Episode 2</a>
-      </div>
-      <div class="close" onclick="closeModal('kdj')">Tutup</div>
     </div>
   </div>
 
@@ -702,8 +676,6 @@
       'The Angel Next Door - Episode 12 END': 23,
       'Aristocrat Adventure - Episode 1': 25,
       'Aristocrat Adventure - Episode 2': 25,
-      'Kawaii dake ja Nai Shikimori-san - Episode 1': 25,
-      'Kawaii dake ja Nai Shikimori-san - Episode 2': 25,
     };
 
     function gantiEpisode(link, judul){
